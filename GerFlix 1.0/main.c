@@ -2,15 +2,18 @@
 #include <stdlib.h>
 #include <string.h>
 #include "Usuario.h"
-#include "validar.h"
+#include "Funciones_Validar.h"
 
 #define TAMSERIE 20
 #define TAMUSUARIO 100
 
 int main()
 {
-    char seguir = 's', auxOpcion[21];
-    int opcion=0;
+    char seguir = 's';
+
+    int opcion=0, auxBaja;
+    char auxOpcion[21], auxiliar_Baja[21]; //v para val
+
 
     eSerie listaDeSeries[TAMSERIE];
     eUsuario listaDeUsuarios[TAMUSUARIO];
@@ -35,10 +38,11 @@ int main()
     printf("\n\t5.Mostrar Lista de Usuarios.\n");
     printf("\n\t6.Mosrtar Usuarios con su Series.\n");
     printf("\n\t7.Mostrar Series con su Usuarios.\n");
+    printf("\n\t8.SALIR DEL MENU");
 
     ///Validacion para que la respuesta sea un numero
 
-    if(!getStringNumeros("\nRepuesta: ", auxOpcion))
+    if(!getStringNumeros("\n\nIngrese opcion: ", auxOpcion))
      {
        system("cls");
        printf("\nEROOR! La respuesta debe ser un numero!\n");
@@ -52,10 +56,30 @@ int main()
          case 1:
                 alta_Usuarios(listaDeUsuarios);
                 alta_Series(listaDeSeries);
-
                 break;
 
          case 2:
+
+                if(!getStringNumeros("\n\tQue desea dar de baja?\n\t[1] = Usuario\n\t[2] = Serie\n\tRespuesta: ",auxiliar_Baja)){
+                    printf("\n\tERROR! La respuesta debe ser un numero.");
+                    break;
+                }
+                auxBaja = atoi(auxiliar_Baja);
+
+                if(auxBaja == 1){
+
+                    baja_usuario(listaDeUsuarios,15);
+                    break;
+
+                }else if(auxBaja == 2){
+
+                    baja_serie(listaDeSeries,5);
+                    break;
+
+                }else{
+                    printf("\n\tNo eligio ninguna opcion.\n");
+                    break;
+                }
 
                 break;
 
@@ -75,6 +99,14 @@ int main()
 
          case 6:
                 mostrarUsuarioConSuSerie(listaDeUsuarios,TAMUSUARIO,listaDeSeries,TAMSERIE);
+                break;
+
+         case 7:
+
+                break;
+
+         case 8:
+                seguir = 'n';
                 break;
      }
  }

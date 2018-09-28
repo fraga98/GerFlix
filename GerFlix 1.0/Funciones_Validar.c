@@ -1,7 +1,8 @@
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "validar.h"
+#include "Funciones_Validar.h"
 
 /**------------------FUNCIONES DE INVOCACION------------------*/
 

@@ -33,12 +33,44 @@ void alta_Usuarios(eUsuario usuarios[])
     }
 }
 
+void baja_usuario(eUsuario user[], int cantUserarios){
+
+    int i, aux_id;
+    char auxId[21];
+
+    if(!getStringNumeros("\n\tIngrese ID Usuario: ",auxId)){
+        printf("\n\tERROR! La ID debe contener solo numeros.\n");
+    }
+
+    aux_id = atoi(auxId);
+
+    for(i=0; i<cantUserarios; i++){
+
+        if(user[i].estado == 1){
+
+            if(aux_id == user[i].idUsuario){
+
+                user[i].estado = 0;
+                system("cls");
+                printf("\n\tUSUARIO DADO DE BAJA!\n");
+                break;
+
+            }else{
+
+                system("cls");
+                printf("\n\tUSUARIO INEXISTENTE!\n");
+                break;
+            }
+        }
+    }
+}
+
 void mostrarListaUsuarios(eUsuario user[], int cant){
     int i;
 
     for(i=0;i<cant;i++){
         if(user[i].estado == 1){
-            printf("\n\t%d -- %s\n",user[i].idUsuario,user[i].nombre);
+            printf("\n\t%d -- %s\n\n",user[i].idUsuario,user[i].nombre);
         }
     }
 }
