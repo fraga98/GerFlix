@@ -22,7 +22,7 @@ void inicializarSeriesEstado(eSerie series[], int cant)
 }
 
 
-void inicializarSeriesHardCode(eSerie series[])
+void alta_Series(eSerie series[])
 {
     int id[5] = {100,101,102,103,104};
     char nombre[][50]={"TBBT","TWD","GOT","BB","LCDP"};
@@ -38,6 +38,16 @@ void inicializarSeriesHardCode(eSerie series[])
         series[i].estado = 1;
         strcpy(series[i].nombre, nombre[i]);
         strcpy(series[i].genero, genero[i]);
+    }
+}
+void mostrarListaSeries(eSerie serie[], int cant){
+
+    int i;
+
+    for(i=0;i<cant;i++){
+        if(serie[i].estado == 1){
+            printf("\n\t%d -- %s -- %s -- %d\n\n\n",serie[i].idSerie,serie[i].nombre,serie[i].genero,serie[i].cantidadTemporadas);
+        }
     }
 }
 

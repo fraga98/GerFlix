@@ -1,5 +1,6 @@
 
 #include "Usuario.h"
+#include <string.h>
 
 void inicializarUsuariosEstado(eUsuario usuarios[], int cant)
 {
@@ -10,7 +11,8 @@ void inicializarUsuariosEstado(eUsuario usuarios[], int cant)
         usuarios[i].estado = 0;
     }
 }
-void inicializarUsuariosHardCode(eUsuario usuarios[])
+
+void alta_Usuarios(eUsuario usuarios[])
 {
 
 
@@ -18,8 +20,6 @@ void inicializarUsuariosHardCode(eUsuario usuarios[])
     char nombre[][50]= {"Juan","Maria","Pedro","Vanesa","Jose","Luisa","Laura","Marcelo","German","Victoria","Dafne","Antonela","Gisele","Dario","Pedro"};
 
     int serie[15] = {100,100,101,101,102,100,100,103,101,102,103,101,100,100,101};
-
-
 
     int i;
 
@@ -31,13 +31,38 @@ void inicializarUsuariosHardCode(eUsuario usuarios[])
         strcpy(usuarios[i].nombre, nombre[i]);
 
     }
-
-
-
-
-
-
-
-
-
 }
+
+void mostrarListaUsuarios(eUsuario user[], int cant){
+    int i;
+
+    for(i=0;i<cant;i++){
+        if(user[i].estado == 1){
+            printf("\n\t%d -- %s\n",user[i].idUsuario,user[i].nombre);
+        }
+    }
+}
+
+///******************(Listado)
+
+void mostrarUsuarioConSuSerie(eUsuario user[], int cantUser, eSerie serie[], int cantSerie){
+
+    int i, j;
+
+    for(i=0;i<cantUser;i++){
+
+        for(j=0;j<cantSerie;j++){
+
+            if(user[i].idSerie == serie[j].idSerie){
+
+                if(user[i].estado == 1){
+
+                    printf("\n\t%d -- %s -- %s\n",user[i].idUsuario,user[i].nombre,serie[j].nombre);
+                }
+            }
+        }
+    }
+}
+
+
+
